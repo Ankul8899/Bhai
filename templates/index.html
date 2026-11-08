@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Special Surprise 🎁</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+
+    font-family:Arial,sans-serif;
+
+    background:
+    radial-gradient(circle at top,#5b164f,#180b20 55%,#050509);
+
+    color:white;
+
+    display:flex;
+    justify-content:center;
+
+    padding:30px 15px;
+
+    overflow-x:hidden;
+}
+
+.container{
+    width:100%;
+    max-width:500px;
+
+    text-align:center;
+}
+
+h1{
+    font-size:34px;
+    margin-top:20px;
+
+    text-shadow:0 0 20px rgba(255,100,220,.7);
+}
+
+.subtitle{
+    color:#ddd;
+    margin-top:10px;
+    margin-bottom:35px;
+}
+
+.gifts{
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+.gift{
+    position:relative;
+
+    padding:25px 15px;
+
+    min-height:230px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:0 10px 40px rgba(0,0,0,.35);
+}
+
+.gift h2{
+    margin-bottom:20px;
+}
+
+/* GIFT BOX */
+
+.box{
+    width:115px;
+    height:90px;
+
+    background:#d92f6d;
+
+    position:relative;
+
+    margin:35px auto 15px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:
+    0 10px 25px rgba(255,50,130,.35);
+}
+
+.box:hover{
+    transform:translateY(-5px) scale(1.03);
+}
+
+.box::before{
+    content:"";
+
+    position:absolute;
+
+    width:20px;
+    height:100%;
+
+    left:47px;
+
+    background:#ffd34e;
+}
+
+.lid{
+    position:absolute;
+
+    width:130px;
+    height:28px;
+
+    left:-7px;
+    top:-20px;
+
+    background:#ef4280;
+
+    border-radius:7px;
+
+    transition:
+    transform .7s,
+    top .7s;
+    
+    z-index:2;
+}
+
+.lid::before{
+    content:"";
+
+    position:absolute;
+
+    width:20px;
+    height:28px;
+
+    left:55px;
+
+    background:#ffd34e;
+}
+
+.box.open .lid{
+    top:-75px;
+
+    transform:
+    rotate(-12deg)
+    translateX(20px);
+}
+
+/* SURPRISE */
+
+.surprise{
+    display:none;
+
+    margin-top:25px;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.1);
+
+    animation:appear .8s ease;
+}
+
+.surprise.show{
+    display:block;
+}
+
+@keyframes appear{
+
+    from{
+        opacity:0;
+        transform:scale(.5) translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+
+}
+
+.sweet{
+    font-size:65px;
+
+    animation:bounce 1s infinite alternate;
+}
+
+.money{
+    font-size:60px;
+
+    animation:float 2s infinite ease-in-out;
+}
+
+.frock{
+    font-size:70px;
+
+    animation:dress 1.5s infinite alternate;
+}
+
+@keyframes bounce{
+    to{
+        transform:translateY(-10px) rotate(5deg);
+    }
+}
+
+@keyframes float{
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+@keyframes dress{
+    to{
+        transform:rotate(4deg) scale(1.05);
+    }
+}
+
+.message{
+    margin-top:10px;
+
+    color:#eee;
+
+    line-height:1.6;
+}
+
+button{
+    border:0;
+
+    padding:12px 20px;
+
+    border-radius:12px;
+
+    background:
+    linear-gradient(90deg,#ff3f91,#a832ff);
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-top:15px;
+}
+
+button:active{
+    transform:scale(.95);
+}
+
+.footer{
+    margin-top:30px;
+
+    color:#999;
+
+    font-size:13px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎁 A Little Surprise 🎁</h1>
+
+<p class="subtitle">
+Three little gifts, just for you 💖
+</p>
+
+
+<div class="gifts">
+
+
+<!-- GIFT 1 -->
+
+<div class="gift">
+
+<h2>🎀 Gift 1</h2>
+
+<div class="box"
+onclick="openGift(this,'sweet')">
+
+<div class="lid"></div>
+
+</div>
+
+<p>Tap the gift to open 💝</p>
+
+<div class="surprise"
+id="sweet">
+
+<div class="sweet">
+🍫🍬🍭
+</div>
+
+<h2>
+Sweet Surprise 🍫
+</h2>
+
+<p class="message">
+A little sweetness for someone
+who deserves lots of happiness. 💕
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- GIFT 2 -->
+
+<div class="gift">
+
+<h2>💝 Gift 2</h2>
+
+<div class="box"
+onclick="openGift(this,'money')">
+
+<div class="lid"></div>
+
+</div>
+
+<p>Tap the gift to open 💝</p>
+
+<div class="surprise"
+id="money">
+
+<div class="money">
+💰
+</div>
+
+<h2>
+Money Surprise 💵
+</h2>
+
+<p class="message">
+A cute little cash-style surprise! ✨<br>
+₹1,000 💸
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- GIFT 3 -->
+
+<div class="gift">
+
+<h2>🎁 Gift 3</h2>
+
+<div class="box"
+onclick="openGift(this,'frock')">
+
+<div class="lid"></div>
+
+</div>
+
+<p>Tap the gift to open 💝</p>
+
+<div class="surprise"
+id="frock">
+
+<div class="frock">
+👗
+</div>
+
+<h2>
+Pretty Frock 👗💗
+</h2>
+
+<p class="message">
+A cute little dress for a beautiful
+special moment. 🌸✨
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<p class="footer">
+Made with 💖 just for you
+</p>
+
+</div>
+
+
+<script>
+
+function openGift(box,id){
+
+    if(box.classList.contains("opened")){
+        return;
+    }
+
+    box.classList.add("opened");
+    box.classList.add("open");
+
+    setTimeout(function(){
+
+        document
+        .getElementById(id)
+        .classList.add("show");
+
+    },500);
+
+}
+
+</script>
+
+</body>
+
+</html>
+
